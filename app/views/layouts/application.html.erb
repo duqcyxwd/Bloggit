@@ -6,16 +6,18 @@
 	<%= stylesheet_link_tag    "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
-	
+
 </head>
 <body>
 
-    <ul>
-        <li><%= link_to "Home", welcome_index_path %></li>
-        <li><%= link_to "About", welcome_about_path %></li>
-    </ul>
+	<div class="container">
+	  	<ul class="nav nav-tabs">
+			<li><%= link_to "Bloccit", welcome_index_path %></li>
+			<li><%= link_to "About", welcome_about_path %></li>
+		</ul>
 
-    <%= yield %>
+		<%= yield %>
+	</div>
 
 </body>
 </html>
