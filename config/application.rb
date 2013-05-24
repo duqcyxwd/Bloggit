@@ -64,5 +64,9 @@ module Bloggit
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # see if this work to solve problem at
+    # http://hpyblg.wordpress.com/2011/03/05/disable-the-%E2%86%90s-in-rails-on-windows/
+    config.colorize_logging = false
   end
 end
