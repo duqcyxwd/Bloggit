@@ -2,7 +2,6 @@ Bloggit::Application.routes.draw do
   
   resources :posts
 
-
   get "welcome/index"
   get "welcome/about"
 
