@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.new(params[:post])
-		# raise # this will short-circuit the method
+		raise # this will short-circuit the method
 		if @post.save
 			flash[:notice] = "Post was saved."
 			redirect_to @post
