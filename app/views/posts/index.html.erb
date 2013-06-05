@@ -1,4 +1,9 @@
 <h1>All Posts</h1>
+<p>
+	<button class="btn" type="button">
+		<%= link_to "Create New Post", new_post_path %>
+	</button>
+</p>
 <% @posts.each do |post| %>
 	<div class="media">
 		<div class="media-body">

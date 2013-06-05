@@ -5,8 +5,7 @@ Bloggit::Application.routes.draw do
   # get "welcome/index"
   # get "welcome/about"
 
-  match "about" => 'welcome#about'
-  # , via: :get
+  match "about" => 'welcome#about', via: :get
 
   root :to => 'welcome#index'  #Pass as a hash :to is key, 
   # root to: 'welcome#index'
