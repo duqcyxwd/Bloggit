@@ -68,5 +68,8 @@ module Bloggit
     # see if this work to solve problem at
     # http://hpyblg.wordpress.com/2011/03/05/disable-the-%E2%86%90s-in-rails-on-windows/
     config.colorize_logging = false
+
+    #On config/application.rb forcing your application to not access the DB or load models when precompiling your assets.
+    config.assets.initialize_on_precompile = false
   end
 end
