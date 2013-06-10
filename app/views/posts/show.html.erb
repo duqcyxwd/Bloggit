@@ -1,9 +1,16 @@
 <!-- <h1><%= @post.title %></h1> -->
 <!-- <p><%= @post.body %></p> -->
 
-<%= content_for :title do %>
-  <%= @post.title %>
-  <%= link_to "Edit", edit_post_path(@post), class: 'btn btn-mini' %>
-<% end %>
-
+<%#= content_for :title do %>
+  <%#= @post.title %>
+  <%#= link_to "Edit", edit_post_path(@post), class: 'btn btn-mini' %>
+<%# end %>
+<div class="row page-header">
+	<div class="span12">
+	  <h1>
+	    <%= @post.title %>
+		<%= link_to "Edit", edit_post_path(@post), class: 'btn btn-mini' %>
+	  </h1>
+	</div>
+</div>
 <p><%= @post.body %></p>
