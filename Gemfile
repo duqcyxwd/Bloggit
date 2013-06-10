@@ -24,7 +24,12 @@ gem 'faker'
 
 gem 'jquery-rails'
 
+# User Anthorzation
 gem 'devise'
+
+#User authorize different users
+gem 'cancan'
+
 # gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
