@@ -1,16 +1,18 @@
 <h1>All Posts</h1>
 
-<% if can? :create, Post %>
-  <%= link_to "New Post", new_post_path, class: 'btn btn-primary btn-mini' %>
-<% end %>
+<%# if can? :create, Post %>
+  <%#= link_to "New Post", new_post_path, class: 'btn btn-primary btn-mini' %>
+<%# end %>
 <!-- <button class="btn" type="button">
 	<%#= link_to "Create New Post", new_post_path %>
 </button> -->
-<% @posts.each do |post| %>
+<% @topics.each do |topic| %>
+	<% posts = topic.posts %>
+	<% posts.each do |post| %>
 	<div class="media">
 		<div class="media-body">
 			<h4 class="media-heading">
-				<%= link_to post.title, [@topic, post] %>
+				<%= link_to post.title, [topic, post] %>
 			</h4>
 		</div>
 		<small>
@@ -18,4 +20,5 @@
 	        <%= post.comments.count %> Comments
 	    </small>
 	</div>
+	<% end %>
 <% end %>
