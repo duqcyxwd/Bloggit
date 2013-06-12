@@ -2,7 +2,11 @@ Bloggit::Application.routes.draw do
   
   devise_for :users
 
-  resources :posts
+  resources :topics do
+    resources :posts, except: [:index]
+  end
+
+  get "posts/index"
 
   # get "welcome/index"
   # get "welcome/about"
