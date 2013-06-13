@@ -62,7 +62,7 @@ u.update_attributes(name:'Super Smart', email: 'duqcyxwd@gmail.com', password: '
 u.confirm!
 # u.skip_confirmation!
 # u.save
-# u.update_attribute(:role, 'admin')
+u.update_attribute(:role, 'admin')
 
 u = User.new(
   name: 'Admin User',
