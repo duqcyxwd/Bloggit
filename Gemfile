@@ -30,6 +30,8 @@ gem 'devise'
 #User authorize different users
 gem 'cancan'
 
+gem 'redcarpet'
+
 # gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
