@@ -59,7 +59,7 @@ end
 
 u = User.find(1)
 u.update_attributes(name:'Super Smart', email: 'duqcyxwd@gmail.com', password: '19095750', password_confirmation: '19095750')
-u.update_attribute(:role, 'admin')
+u.role = "admin"
 # u.confirm!
 u.skip_confirmation!
 u.save
