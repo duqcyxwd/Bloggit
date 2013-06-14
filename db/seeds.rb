@@ -57,21 +57,24 @@ rand(4..10).times do
 	end
 end
 
-u = User.find(1)
-u.update_attributes(name:'Super Smart', email: 'duqcyxwd@gmail.com', password: '19095750', password_confirmation: '19095750')
-u.role = "admin"
-# u.confirm!
+u = User.new(
+	name:'Super Smart', 
+	email: 'duqcyxwd@gmail.com', 
+	password: '19095750', 
+	password_confirmation: '19095750')
 u.skip_confirmation!
 u.save
+u.update_attribute(:role, 'admin')
 
 u = User.new(
   name: 'Admin User',
   email: 'admin@example.com', 
   password: 'helloworld', 
   password_confirmation: 'helloworld')
+u.role = "admin"
 u.skip_confirmation!
 u.save
-u.update_attribute(:role, 'admin')
+# u.update_attribute(:role, 'admin')
 
 u = User.new(
   name: 'Moderator User',
