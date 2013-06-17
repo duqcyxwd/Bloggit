@@ -2,7 +2,7 @@
   background-color: #232323;
   border: 1px solid black;
   font-family: 'Courier New', 'Terminal', monospace;
-  color: #E6E0DB;
+  color: #F8F8F0;
   padding: 3px 5px;
   overflow: auto;
   font-size: 12px;
@@ -14,23 +14,25 @@
 }
 
 .CodeRay .attribute { color:#E7BE69 }                              /* html attribute */
-.CodeRay .comment  { color:#BC9358; font-style: italic; }          /* comment */
+.CodeRay .comment  { color:#75715E; font-style: italic; }          /* comment */
 .CodeRay .escaped_character { color:#509E4F }                      /* escaped character */
-.CodeRay .class { color:#FFF }                                     /* class */
-.CodeRay .constant { color:#FFF }                                  /* constant */
+.CodeRay .class { color:#66D9EF }                                     /* class */
+.CodeRay .constant { color:#66D9EF }                                  /* constant */
 .CodeRay .float { color:#A4C260 }                                  /* float */
-.CodeRay .function { color:#FFC56D }                               /* function */
 .CodeRay .global_variable { color:#D0CFFE }                        /* global variable */
-.CodeRay .integer  { color:#A4C260 }                               /* integer */
-.CodeRay .code { background:#151515 }                              /* inline code */
 .CodeRay .instance_variable { color:#D0CFFE }                      /* instance variable */
+.CodeRay .integer  { color:#AE81FF }                               /* integer */
+.CodeRay .code { background:#151515 }                              /* inline code */
 .CodeRay .doctype { color:#E7BE69 }                                /* doctype */
-.CodeRay .keyword  { color:#CB7832 }                               /* keyword */
+.CodeRay .keyword  { color:#F92672 }                               /* keyword */
 .CodeRay .regex { color:#A4C260 }                                  /* regex */
-.CodeRay .string  { color:#A4C260 }                                /* string */
 .CodeRay .symbol { color:#6C9CBD }                                 /* symbol */
+.CodeRay .predefined-constant { color:#6C9CBD }                                 /* predefined-constant */
 .CodeRay .html_tag { color:#E7BE69 }                               /* html tag */
 .CodeRay .boolean { color:#6C9CBD }                                /* boolean */
+.CodeRay .string  { color:#E6DB74 }                                /* string */
+.CodeRay .function { color:#A6E22E }                               /* function */
+.CodeRay .content {color:#E6DB74}
 
 
 code,
