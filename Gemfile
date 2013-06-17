@@ -32,6 +32,8 @@ gem 'cancan'
 
 gem 'redcarpet'
 
+gem 'coderay'
+
 # gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
