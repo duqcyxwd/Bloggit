@@ -34,6 +34,7 @@ gem 'redcarpet'
 
 gem 'coderay'
 
+gem 'will_paginate', '~> 3.0'
 # gem 'therubyracer'
 
 # To use ActiveModel has_secure_password

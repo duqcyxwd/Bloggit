@@ -9,11 +9,13 @@
             <%= link_to topic.name, topic %>
           </h4>
           <small>
-            <%= topic.description %>
+            <%= topic.description %><br>
+            <%= topic.posts.count %> Posts
           </small>
         </div>
       </div>
     <% end %>
+    <%= will_paginate @topics %>
   </div>
   <div class="span4">
     <% if can? :create, Topic %>
