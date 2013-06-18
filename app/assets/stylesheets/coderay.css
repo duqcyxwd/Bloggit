@@ -78,6 +78,7 @@ pre code {
   /*This is for code class*/
   width: 500px;
   overflow-x: scroll;
+  overflow: auto
 }
 
 pre {
