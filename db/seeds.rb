@@ -8,15 +8,15 @@
 require 'faker'
 
 # rand(10..30).times do
-#   p = Post.create(title: Faker::Lorem.words(rand(1..10)).join(" "), body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"))
+#   p = Post.create(title: Faker::Lorem.words(rand(1..10)).join(' '), body: Faker::Lorem.paragraphs(rand(1..4)).join('\n'))
 #   rand(3..10).times do
-#     p.comments.create(body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+#     p.comments.create(body: Faker::Lorem.paragraphs(rand(1..2)).join('\n'))
 #   end
 # end
 
-# puts "Seed finished"
-# puts "#{Post.count} posts created"
-# puts "#{Comment.count} comments created"
+# puts 'Seed finished'
+# puts '#{Post.count} posts created'
+# puts '#{Comment.count} comments created"
 
 # Create 15 topics
 topics = []
@@ -39,7 +39,7 @@ rand(4..10).times do
 	u.skip_confirmation!
 	u.save
 
-	rand(5..12).times do
+	rand(20..90).times do
 	    topic = topics.first # getting the first topic here
 		p = u.posts.create(
 			topic: topic,
@@ -56,38 +56,6 @@ rand(4..10).times do
 		topics.rotate! # add this line to move the first topic to the last, so that posts get assigned to different topics.
 	end
 end
-
-
-# ua = User.all
-# rand(4..10).times do
-# 	u = ua.first
-# 	rand(20..60).times do
-# 	    topic = topics.first # getting the first topic here
-# 		p = u.posts.create(
-# 			topic: topic,
-# 			title: "Post title:#{Faker::Lorem.words(rand(1..10)).join(" ")}",
-# 			body: "Post body:#{Faker::Lorem.paragraphs(rand(1..4)).join("\n")}" )
-# 		# set the created_at to a time within the past year
-# 		p.update_attribute(:created_at, Time.now - rand(600..31536000))
-
-# 		rand(3..7).times do
-# 			p.comments.create(
-# 				body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
-# 		end
-
-# 		topics.rotate! # add this line to move the first topic to the last, so that posts get assigned to different topics.
-# 	end
-# 	ua.rotate!	
-# end
-
-u = User.new(
-	name:'Super Smart', 
-	email: 'duqcyxwd@gmail.com', 
-	password: '19095750', 
-	password_confirmation: '19095750')
-u.skip_confirmation!
-u.save
-u.update_attribute(:role, 'admin')
 
 u = User.new(
   name: 'Admin User',
@@ -122,3 +90,106 @@ puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
+
+
+c1 = "##Hi, Everyone, I want show some ruby code
+
+```ruby
+    def Hello 
+        puts \"Hello World!\"
+    end
+```
+
+<code lang='ruby'>
+puts 'Hello, world'
+</code>
+
+Hi, We have one `Code` Hahaha
+
+More ruby code
+
+```ruby
+module ApplicationHelper
+	def control_group_tag(errors, &block)
+		if errors.any?
+			content_tag :div, capture(&block), class: 'control-group error'
+		else
+			content_tag :div, capture(&block), class: 'control-group'
+		end
+	end
+
+	class MarkdownRenderer < Redcarpet::Render::HTML
+		def block_code(code, language)
+			# CodeRay.highlight(code, language, :line_numbers => :table)
+			# CodeRay.highlight(code, language)
+			# CodeRay.scan(code, language).div
+			# CodeRay.scan(code, language).div(:line_numbers => :table)
+			CodeRay.scan(code, language||'ruby').html(:line_numbers => :table)
+		end
+	end
+
+	def markdown(text)
+		rndr = MarkdownRenderer.new(:filter_html => false, :hard_wrap => false)
+		options = {
+			:fenced_code_blocks => true,
+			:no_intra_emphasis => true,
+			:autolink => true,
+			:strikethrough => true,
+			:lax_html_blocks => true,
+			:superscript => true
+		}
+		markdown_to_html = Redcarpet::Markdown.new(rndr, options)
+		markdown_to_html.render(text).html_safe
+	end
+
+	# def markdown(text)
+	# 	renderer = Redcarpet::Render::HTML.new
+	# 	extensions = {fenced_code_blocks: true}
+	# 	redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+	# 	(redcarpet.render text).html_safe
+	# end
+end
+
+```"
+
+
+
+u = User.new(
+	name:'Super Smart', 
+	email: 'duqcyxwd@gmail.com', 
+	password: '19095750', 
+	password_confirmation: '19095750')
+u.skip_confirmation!
+u.role = "admin"
+u.save
+
+topic = Topic.create(
+    name: "Code SyntaxHighlighting Example", 
+    description: "Topic Description: #{Faker::Lorem.paragraph(rand(1..4))}"
+  )
+
+rand(10..15).times do
+	p = u.posts.create(
+		topic: topic,
+		title: "Post title:#{Faker::Lorem.words(rand(1..10)).join(" ")}",
+		body: "Post body:#{Faker::Lorem.paragraphs(rand(1..4)).join("\n")}" )
+	# set the created_at to a time within the past year
+	p.update_attribute(:created_at, Time.now - rand(600..31536000))
+
+	rand(3..7).times do
+		p.comments.create(
+			body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+	end
+end
+
+p = u.posts.create(
+	topic: topic,
+	title: "Some Ruby Code",
+	body: "#{c1}" )
+# set the created_at to a time within the past year
+p.update_attribute(:created_at, Time.now - rand(600..31536000))
+
+rand(3..7).times do
+	p.comments.create(
+		body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+end
