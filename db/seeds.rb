@@ -80,22 +80,24 @@ rand(20..90).times do
 	# set the created_at to a time within the past year
 	p.update_attribute(:created_at, Time.now - rand(600..31536000))
 
-	# rand(3..7).times do
-	# 	# c = Comment.new(
-	# 	# 	body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
-	# 	# c.user = u
-	# 	# c.post = p
-	# 	# c.save
+	rand(3..7).times do
+		c = Comment.new(
+			user: u,
+			post: p,
+			body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+		# c.user = u
+		# c.post = p
+		c.save
 
-	# 	c = p.comments.created(
-	# 		user: u,
+		# c = p.comments.create(
+		# 	user: u,
+		# 	body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
+	end
+
+	# rand(3..7).times do
+	# 	p.comments.create(
 	# 		body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
 	# end
-
-	rand(3..7).times do
-		p.comments.create(
-			body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"))
-	end
 
 	topics.rotate! # add this line to move the first topic to the last, so that posts get assigned to different topics.
 end
@@ -190,7 +192,7 @@ rand(10..15).times do
 		title: "Post title:#{Faker::Lorem.words(rand(1..10)).join(" ")}",
 		body: "Post body:#{Faker::Lorem.paragraphs(rand(1..4)).join("\n")}" )
 	# set the created_at to a time within the past year
-	p.update_attribute(:created_at, Time.now - rand(600..31536000))
+	p.update_attribute(:created_at, Time.now)
 
 	# rand(3..7).times do
 	# 	p.comments.create(

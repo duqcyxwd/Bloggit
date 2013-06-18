@@ -5,8 +5,31 @@
     <p><%= markdown @post.body %></p>
   </div>
   <div class="span4">
-    <% if can? :edit, @post %>
-      <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
-    <% end %>
+    <%# if can? :edit, @post %>
+      <%#= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
+    <%# end %>
   </div>
+  <br>
 </div>
+
+<% @comments.each do |comment| %>
+  <p> User Name:
+    <%= comment.user.name %>
+  </p>
+  <p>
+      Comments:
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<%#= form_for @post do |f| %>
+  <%#= f.label :body, class: 'control-label' %>
+  <%#= f.text_area :body, rows: 8 %>
+  <%#= f.submit "Save", class: 'btn' %>
+<%# end %>
+
+<%= form_for [@topic, @post, @comment], htm: { class: 'form-horizontal' } do |f| %>
+  <%= f.label :body, class: 'control-label' %>
+  <%= f.text_area :body, rows: 8 %>
+  <%= f.submit "Save", class: 'btn' %>
+<% end %>
