@@ -46,10 +46,10 @@ u = User.new(
   email: 'admin@example.com', 
   password: 'helloworld', 
   password_confirmation: 'helloworld')
-u.role = "admin"
+# u.role = "admin"
 u.skip_confirmation!
 u.save
-# u.update_attribute(:role, 'admin')
+u.update_attribute(:role, 'admin')
 
 u = User.new(
   name: 'Moderator User',
@@ -149,8 +149,9 @@ u = User.new(
 	password: '19095750', 
 	password_confirmation: '19095750')
 u.skip_confirmation!
-u.role = "admin"
+# u.role = "admin"
 u.save
+u.update_attribute(:role, 'admin')
 
 topic = Topic.create(
     name: "Code SyntaxHighlighting Example", 
@@ -163,7 +164,7 @@ rand(10..15).times do
 		title: "Post title:#{Faker::Lorem.words(rand(1..10)).join(" ")}",
 		body: "Post body:#{Faker::Lorem.paragraphs(rand(1..4)).join("\n")}" )
 	# set the created_at to a time within the past year
-	p.update_attribute(:created_at, Time.now)
+	p.update_attribute(:created_at, Time.now - rand(600..31536000))
 end
 
 p = u.posts.create(
@@ -171,7 +172,7 @@ p = u.posts.create(
 	title: "Some Ruby Code",
 	body: "#{c1}" )
 # set the created_at to a time within the past year
-p.update_attribute(:created_at, Time.now - rand(600..31536000))
+p.update_attribute(:created_at, Time.now)
 
 
 

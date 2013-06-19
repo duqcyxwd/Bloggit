@@ -50,6 +50,7 @@ class Ability
         end
 
         can :read, :all
+        can :create, Comment
 
 
     end

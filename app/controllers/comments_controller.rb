@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 			post: @post,
 			body: params[:comment][:body])
 
-		authorize! :create, @topic, message: "You need to be an admin to do that."
+		authorize! :create, @comment, message: "You need be signed in to do that."
 		if @comment.save
 			flash[:notice] = "comment was saved successfully."
 			redirect_to [@topic, @post]
