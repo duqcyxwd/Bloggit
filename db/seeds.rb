@@ -22,7 +22,7 @@ require 'faker'
 topics = []
 6.times do
   topics << Topic.create(
-    name: "Topic Name: #{Faker::Lorem.words(rand(1..10)).join(" ")}", 
+    name: "Topic Name: #{Faker::Lorem.words(Random.rand(1..10)).join(" ")}", 
     description: "Topic Description: #{Faker::Lorem.paragraph(rand(1..4))}"
   )
 end
