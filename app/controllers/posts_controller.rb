@@ -9,9 +9,6 @@ class PostsController < ApplicationController
 		@comments = @post.comments
 
 		@comment = Comment.new
-		# @Newcomment = @post.comments.build(params[:comment])
-		# @Newcomment.user = current_user
-
 	end
 
 	def new
