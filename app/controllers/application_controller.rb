@@ -5,9 +5,6 @@ class ApplicationController < ActionController::Base
 		redirect_to root_url, :alert => exception.message
 	end
 
-	#Require you to be login first
-	# before_filter :authenticate_user!
-
 	after_filter :store_refer
 
 	def store_refer
