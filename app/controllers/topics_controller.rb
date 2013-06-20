@@ -42,4 +42,17 @@ class TopicsController < ApplicationController
 			render :edit
 		end
 	end
+
+	def destroy
+		@topic = Topic.find(params[:id])
+		name = @topic.name
+		authorize! :destroy, @topic, message: "You need to own the topic to delete it."
+		if @topic.delete
+			flash[:notice] = "\"#{name}\" was deleted successfully."
+			redirect_to topics_path
+		else
+			flash[:error] = "Was unable to delete topic. Please try again."
+			render :show
+		end
+	end
 end

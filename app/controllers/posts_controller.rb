@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 	def index
-		@topics = Topic.all		
+		@topics = Topic.all
+
+		@posts = Post.all
 	end
 
 	def show
@@ -23,7 +25,7 @@ class PostsController < ApplicationController
 		@post = current_user.posts.build(params[:post])
 		@post.topic = @topic
 
-		
+
 		authorize! :create, @post, message: "You need to be signed up to do that."
 		# raise # this will short-circuit the method
 		if @post.save
@@ -52,6 +54,21 @@ class PostsController < ApplicationController
 		else
 			flash[:error] = "There was an error saving the post. Please try again."
 			render :new
+		end
+	end
+
+	def destroy
+		@topic = Topic.find(params[:topic_id])
+		@post = Post.find(params[:id])
+
+		title = @post.title
+		authorize! :destroy, @post, message: "You need to own the post to delete it."
+		if @post.destroy
+			flash[:notice] = "\"#{title}\" was deleted successfully."
+			redirect_to @topic
+		else
+			flash[:error] = "Cannot delete a post if it has comments already."
+			render :show
 		end
 	end
 end
