@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 		redirect_to root_url, :alert => exception.message
 	end
 
+	#save a location after page finish loading, use this to redirect user to original page after user sign in
 	after_filter :store_refer
 
 	def store_refer
