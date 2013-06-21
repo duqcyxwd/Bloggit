@@ -149,12 +149,12 @@ u = User.new(
 	password: '19095750', 
 	password_confirmation: '19095750')
 u.skip_confirmation!
-# u.role = "admin"
+u.role = "admin"
 u.save
-u.update_attribute(:role, 'admin')
+# u.update_attribute(:role, 'admin')
 
 topic = Topic.create(
-    name: "Code SyntaxHighlighting Example 一些代码~", 
+    name: "<strong> Code SyntaxHighlighting Example</strong> ", 
     description: "Topic Description: #{Faker::Lorem.paragraph(rand(1..4))}"
   )
 

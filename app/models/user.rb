@@ -21,6 +21,6 @@ class User < ActiveRecord::Base
   private
 
     def set_member
-      self.role = 'member'
+      self.role ||= 'member'
     end
 end
