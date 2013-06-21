@@ -154,7 +154,7 @@ u.save
 u.update_attribute(:role, 'admin')
 
 topic = Topic.create(
-    name: "Code SyntaxHighlighting Example", 
+    name: "Code SyntaxHighlighting Example 一些代码~", 
     description: "Topic Description: #{Faker::Lorem.paragraph(rand(1..4))}"
   )
 
