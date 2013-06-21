@@ -37,6 +37,11 @@ gem 'redcarpet'
 gem 'coderay'
 
 gem 'will_paginate', '~> 3.0'
+
+#Authentication
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
