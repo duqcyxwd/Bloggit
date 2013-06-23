@@ -1,4 +1,8 @@
 class Post < ActiveRecord::Base
+	# The final thing to implement is default voting. It's safe to assume that if a user submits a post, they'll want to vote it up
+	# We'll do this automatically for them by adding another after_create in post.rb:
+	after_create :create_vote
+
 	has_many :comments, dependent: :destroy
 	has_many :votes, dependent: :destroy
 	belongs_to :user
@@ -31,6 +35,16 @@ class Post < ActiveRecord::Base
 		age = (Time.now - self.created_at) / 86400
 		new_rank -= (age * 5) if age > 4
 
-		self.update_attribute(:rank, new_rank)	
+		self.update_attribute(:rank, new_rank)
 	end
+
+
+	private
+
+	# Who ever created a post, should automatically be set to "voting" it up.
+	def create_vote
+		user.votes.create(value: 1, post: self)
+	end
+
+
 end
