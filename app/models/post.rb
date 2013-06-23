@@ -6,7 +6,8 @@ class Post < ActiveRecord::Base
 	attr_accessible :body, :title, :topic
 
 	# created_at is a clown in database
-	default_scope order('created_at DESC')
+	# default_scope order('created_at DESC')
+	default_scope order('rank DESC') # Da dao xiao
 
 	validates :title, length: { minimum: 5 }, presence: true
 	validates :body, length: { minimum: 20 }, presence: true
@@ -23,5 +24,13 @@ class Post < ActiveRecord::Base
 
 	def points
 		self.votes.sum(:value).to_i
+	end
+
+	def update_rank
+		new_rank = points
+		age = (Time.now - self.created_at) / 86400
+		new_rank -= (age * 5) if age > 4
+
+		self.update_attribute(:rank, new_rank)	
 	end
 end
