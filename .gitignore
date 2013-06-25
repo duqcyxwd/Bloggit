@@ -15,4 +15,10 @@
 /tmp
 
 # Ignore mail setup file
-config/initializers/setup_mail.rb
+# config/initializers/setup_mail.rb
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore image upload cache
+/public/uploads/tmp/*

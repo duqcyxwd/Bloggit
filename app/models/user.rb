@@ -7,13 +7,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar
   
   has_many :posts
   has_many :comments
   has_many :votes, dependent: :destroy
 
-  before_create :set_member
+  before_create :set_default_role
+  
+  mount_uploader :avatar, AvatarUploader # add this line.
 
   # attr_accessible :title, :body
   ROLES = %w[member moderator admin]
@@ -23,7 +25,7 @@ class User < ActiveRecord::Base
 
   private
 
-    def set_member
+    def set_default_role
       self.role ||= 'member'
     end
 end

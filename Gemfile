@@ -42,6 +42,13 @@ gem 'will_paginate', '~> 3.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'fog'
+
+gem 'figaro'
+
 # gem 'therubyracer'
 
 # To use ActiveModel has_secure_password

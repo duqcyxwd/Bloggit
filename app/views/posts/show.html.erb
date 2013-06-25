@@ -4,7 +4,9 @@
 
 <div class="row">
   <div class="span8">
-  <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
+    <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
+    <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
+      submitted <%= time_ago_in_words(@post.created_at) %> ago by  <%= @post.user.name %><br/>
     <p><%= markdown @post.body %></p>
   </div>
 
