@@ -4,6 +4,7 @@
   <% end %>
   <div class="media-body">
     <small>
+      <%= image_tag(comment.user.avatar.tiny.url) if comment.user.avatar? %>
       <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
       <% if can? :destroy, comment %>
         | <%= link_to "Delete", [@topic, @post, comment], method: :delete %>
