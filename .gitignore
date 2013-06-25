@@ -21,4 +21,4 @@
 /config/application.yml
 
 # Ignore image upload cache
-/public/uploads/tmp/*
+/public/uploads
