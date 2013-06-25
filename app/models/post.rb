@@ -7,7 +7,9 @@ class Post < ActiveRecord::Base
 	has_many :votes, dependent: :destroy
 	belongs_to :user
 	belongs_to :topic
-	attr_accessible :body, :title, :topic
+	mount_uploader :image, PostImageUploader
+
+	attr_accessible :body, :title, :topic, :user, :image
 
 	# created_at is a clown in database
 	# default_scope order('created_at DESC')
