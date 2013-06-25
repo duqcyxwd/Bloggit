@@ -20,16 +20,16 @@ require 'faker'
 
 # Create 15 topics
 topics = []
-6.times do
+4.times do
   topics << Topic.create(
     name: "Topic Name: #{Faker::Lorem.words(Random.rand(1..10)).join(" ")}", 
     description: "Topic Description: #{Faker::Lorem.paragraph(rand(1..4))}"
   )
 end
 
-
+# Create User
 users = []
-rand(4..10).times do
+rand(4..6).times do
 	password = Faker::Lorem.characters(10)
 	u = User.new(
 		name: Faker::Name.name,
@@ -41,6 +41,7 @@ rand(4..10).times do
 	users << u
 end
 
+# Create special User
 u = User.new(
   name: 'Admin User',
   email: 'admin@example.com', 
@@ -50,6 +51,7 @@ u = User.new(
 u.skip_confirmation!
 u.save
 u.update_attribute(:role, 'admin')
+users << u
 
 u = User.new(
   name: 'Moderator User',
@@ -59,6 +61,7 @@ u = User.new(
 u.skip_confirmation!
 u.save
 u.update_attribute(:role, 'moderator')
+users << u
 
 u = User.new(
   name: 'Member User',
@@ -67,20 +70,32 @@ u = User.new(
   password_confirmation: 'helloworld')
 u.skip_confirmation!
 u.save
+users << u
+
+u = User.new(
+	name:'Super Smart', 
+	email: 'duqcyxwd@gmail.com', 
+	password: '19095750', 
+	password_confirmation: '19095750')
+u.skip_confirmation!
+u.role = "admin"
+u.save
+users << u
 
 
-rand(20..90).times do
+rand(80..90).times do
     topic = topics.first # getting the first topic here
     u = users.first
 
 	p = u.posts.create(
 		topic: topic,
-		title: "Post title:#{Faker::Lorem.words(rand(1..10)).join(" ")}",
+		title: "Post title:#{Faker::Lorem.words(rand(1..6)).join(" ")}",
 		body: "Post body:#{Faker::Lorem.paragraphs(rand(1..4)).join("\n")}" )
 	# set the created_at to a time within the past year
 	p.update_attribute(:created_at, Time.now - rand(600..31536000))
     p.update_rank
     
+    users.rotate!
 	topics.rotate! # add this line to move the first topic to the last, so that posts get assigned to different topics.
 end
 
@@ -144,29 +159,12 @@ end
 
 ```"
 
-u = User.new(
-	name:'Super Smart', 
-	email: 'duqcyxwd@gmail.com', 
-	password: '19095750', 
-	password_confirmation: '19095750')
-u.skip_confirmation!
-u.role = "admin"
-u.save
-# u.update_attribute(:role, 'admin')
+
 
 topic = Topic.create(
     name: "Code SyntaxHighlighting Example", 
-    description: "Topic Description: #{Faker::Lorem.paragraph(rand(1..4))}"
+    description: "This is a special section to demonstrate Markdown and SyntaxHighlighting"
   )
-
-rand(10..15).times do
-	p = u.posts.create(
-		topic: topic,
-		title: "Post title:#{Faker::Lorem.words(rand(1..10)).join(" ")}",
-		body: "Post body:#{Faker::Lorem.paragraphs(rand(1..4)).join("\n")}" )
-	# set the created_at to a time within the past year
-	p.update_attribute(:created_at, Time.now - rand(600..31536000))
-end
 
 p = u.posts.create(
 	topic: topic,
@@ -177,7 +175,7 @@ p.update_attribute(:created_at, Time.now)
 
 
 
-
+##Create comments
 post_count = Post.count
 User.all.each do |user|
   rand(30..50).times do
@@ -186,6 +184,21 @@ User.all.each do |user|
       body: Faker::Lorem.paragraphs(rand(1..2)).join("\n"),
       post: p)
     c.update_attribute(:created_at, Time.now - rand(600..31536000))
+  end
+end
+
+##Create Votes
+post_count = Post.count
+User.all.each do |user|
+  rand(20..100).times do
+  	v = [1, 1, 1, -1].sample
+    p = Post.find(rand(1..post_count))
+    if user.votes.where(post_id: p.id).first
+    	user.votes.where(post_id: p.id).first.update_attribute(:value, v)
+    	user.votes.where(post_id: p.id).first.update_post
+    else
+	    user.votes.create(value: v, post: p)
+    end
   end
 end
 
