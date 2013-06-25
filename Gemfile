@@ -42,11 +42,14 @@ gem 'will_paginate', '~> 3.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+#Photo upload and photo process
 gem 'carrierwave'
 gem 'mini_magick'
 
+#S3
 gem 'fog'
 
+# environment variables
 gem 'figaro'
 
 # gem 'therubyracer'
