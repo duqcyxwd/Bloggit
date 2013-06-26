@@ -17,6 +17,7 @@ class FavoritesController < ApplicationController
 		authorize! :destroy, @favorite, message: "You cannot do that."
 		@topic = Topic.find(params[:topic_id])
 		@post = @topic.posts.find(params[:post_id])
+		
 		@favorite = current_user.favorites.find(params[:id])
 
 		if @favorite.destroy
