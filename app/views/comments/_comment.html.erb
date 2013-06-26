@@ -10,7 +10,7 @@
           | <%= link_to "Delete", [@topic, @post, comment], method: :delete %>
         <% end %>
       </small>
-      <p><%= comment.body %></p>
+      <p><%= (markdown comment.body) %></p>
     </div>
   </div>
 <% end %>
