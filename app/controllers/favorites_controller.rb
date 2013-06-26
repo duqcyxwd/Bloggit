@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
 	def create
+		authorize! :create, Favorite, message: "You need to sign in to do that"
 		@topic = Topic.find(params[:topic_id])
 		@post = @topic.posts.find(params[:post_id])
 
@@ -13,6 +14,7 @@ class FavoritesController < ApplicationController
 	end
 
 	def destroy
+		authorize! :destroy, @favorite, message: "You cannot do that."
 		@topic = Topic.find(params[:topic_id])
 		@post = @topic.posts.find(params[:post_id])
 		@favorite = current_user.favorites.find(params[:id])
