@@ -1,6 +1,9 @@
 Bloggit::Application.routes.draw do
   
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', 
+                                    registrations: 'users/registrations' }
+
+  match 'user/edit/toggle-favorite-email-sender', to: 'user#toggle_favorite_email_sender', as: :toggle_favorite_email_sender
 
   resources :topics do
     resources :posts, except: [:index] do
@@ -11,7 +14,6 @@ Bloggit::Application.routes.draw do
     end
   end
 
-  match 'user/edit/toggle-favorite-email-sender', to: 'user#toggle_favorite_email_sender', as: :toggle_favorite_email_sender
   
   get "posts/index"
 
