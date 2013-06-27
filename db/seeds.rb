@@ -163,7 +163,8 @@ end
 
 topic = Topic.create(
     name: "Code SyntaxHighlighting Example", 
-    description: "This is a special section to demonstrate Markdown and SyntaxHighlighting"
+    description: "This is a special section to demonstrate Markdown and SyntaxHighlighting",
+    public: true
   )
 
 p = u.posts.create(
@@ -202,6 +203,7 @@ User.all.each do |user|
   end
 end
 
+Topic.first.update_attribute(:public, true)
 
 puts "Seed finished"
 puts "#{Post.count} posts created"

@@ -1,5 +1,9 @@
 <h1>Topics</h1>
 
+<% if !current_user %>
+  <h3>More topic there after you sign in!!!!</h3>
+<% end %>
+
 <div class="row">
   <div class="span8">
     <% @topics.each do |topic| %>
