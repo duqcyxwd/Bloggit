@@ -1,0 +1,27 @@
+<h3>Do you want to follow up your favorited post?</h3>
+<!-- <div class="favorite">
+  <%# if current_user && favorite = current_user.favorited(post) %>
+    <%#= link_to [topic, post, favorite], class: 'btn btn-small', method: :delete do %>
+      <i class="icon-star-empty"> </i>&nbsp; Unfavorite
+    <%# end %>
+  <%# else %>
+    <%#= form_for [topic, post, Favorite.new] do |f| %>
+      <%#= button_tag type: 'submit', class: 'btn btn-small' do %>
+        <i class="icon-star"> </i>&nbsp; Favorite
+      <%# end %>
+    <%# end %>
+  <%# end %>
+</div> -->
+
+<%#= button_tag type: 'submit', class: 'btn btn-small' do %>
+<%#= link_to [topic, post, favorite], class: 'btn btn-small', method: :delete do %>
+
+<div>
+  <%= link_to toggle_favorite_email_sender_path, class: 'btn btn-small' do %>
+    <% if current_user.email_favorites%>
+      I want receive a email while my favorited post update
+    <% else %>
+      I don't want get email when favorited post update
+    <% end %>
+  <% end %>
+</div>

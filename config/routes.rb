@@ -11,6 +11,8 @@ Bloggit::Application.routes.draw do
     end
   end
 
+  match 'user/edit/toggle-favorite-email-sender', to: 'user#toggle_favorite_email_sender', as: :toggle_favorite_email_sender
+  
   get "posts/index"
 
   # get "welcome/index"

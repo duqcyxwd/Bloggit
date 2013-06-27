@@ -3,13 +3,13 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise  :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
-          :omniauthable, :omniauth_providers => [:facebook]
+  :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+  :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
 
-  attr_accessible :email, :password, :password_confirmation, 
-                  :remember_me, :name, :avatar, :provider, :uid, :email_favorites
+  attr_accessible :email, :password, :password_confirmation,
+  :remember_me, :name, :avatar, :provider, :uid, :email_favorites
 
   has_many :posts
   has_many :comments
@@ -25,12 +25,12 @@ class User < ActiveRecord::Base
     unless user
       pass = Devise.friendly_token[0,20]
       user = User.new(name:auth.extra.raw_info.name,
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
-                         password: pass,
-                         password_confirmation: pass
-                        )
+      provider:auth.provider,
+      uid:auth.uid,
+      email:auth.info.email,
+      password: pass,
+      password_confirmation: pass
+      )
       user.skip_confirmation!
       user.save
     end

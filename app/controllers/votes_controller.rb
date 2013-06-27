@@ -40,10 +40,8 @@ class VotesController < ApplicationController
   def update_vote(new_value)
     if @vote # if it exists, update it
       @vote.update_attribute(:value, new_value)
-      # @vote.update_post
     else # create it
       @vote = current_user.votes.create(value: new_value, post: @post)
     end
-    # @vote.user.update_rank
   end
 end
