@@ -10,7 +10,7 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= render partial: 'votes/voter', locals: { topic: @topic, post: post } %>
+            <%= render partial: 'votes/voter', locals: { topic: @topic, post: post, vote: current_user.voted(post)} %>
             <%= link_to (markdown post.title), [@topic, post] %>
           </h4>
           <small>

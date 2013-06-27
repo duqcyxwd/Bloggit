@@ -1,7 +1,38 @@
-<%# if can? :create, Vote %>
-	<div class="vote-arrows pull-left">
-	  <div><%= link_to " ", topic_post_up_vote_path(topic, post), class: "icon-chevron-up" %></div>
-	  <div><strong><%= post.points %></strong></div>
-	  <div><%= link_to " ", topic_post_down_vote_path(topic, post), class: "icon-chevron-down" %></div>
-	</div>
-<%# end %>
+<div class="vote-arrows pull-left">
+  <div>
+    <% if (vote && vote.up_vote?) %>
+      <div class = "icon-chevron-up voted"></div>
+    <% else %>
+      <%= link_to " ", topic_post_up_vote_path(topic, post), class: "icon-chevron-up" %>
+    <% end %>
+  </div>
+
+  <div><strong><%= post.points %></strong></div>
+
+  <div>
+    <% if vote && vote.down_vote? %>
+      <div class = "icon-chevron-down voted"></div>
+    <% else %>
+      <%= link_to " ", topic_post_down_vote_path(topic, post), class: "icon-chevron-down" %>
+    <% end %>
+  </div>
+
+</div>
+
+
+
+<!-- <div class="vote-arrows pull-left">
+  <div>
+    <%#= link_to " ", 
+      topic_post_up_vote_path(topic, post), 
+      class: "icon-chevron-up #{(vote && vote.up_vote?) ? 'voted' : '' }" %>
+  </div>
+  <div>
+    <strong><%#= post.points %></strong>
+  </div>
+  <div>
+    <%#= link_to " ", 
+      topic_post_down_vote_path(topic, post), 
+      class: "icon-chevron-down #{(vote && vote.down_vote?) ? 'voted' : '' }" %>
+  </div>
+</div> -->

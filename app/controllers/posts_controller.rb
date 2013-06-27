@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 		@topic = Topic.find(params[:topic_id])
 		authorize! :read, @topic, message: "You need to be signed-in to do that"
 		@post = Post.find(params[:id])
+		@vote = current_user.voted(@post)
 		@comments = @post.comments
 		@comment = Comment.new
 	end
