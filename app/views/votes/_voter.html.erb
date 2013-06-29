@@ -1,6 +1,6 @@
 <div class="vote-arrows pull-left">
   <div>
-    <% if (vote && vote.up_vote?) %>
+    <% if (current_user && current_user.voted(post) && current_user.voted(post).up_vote?) %>
       <div class = "icon-chevron-up voted"></div>
     <% else %>
       <%= link_to " ", topic_post_up_vote_path(topic, post), class: "icon-chevron-up" %>
@@ -10,7 +10,7 @@
   <div><strong><%= post.points %></strong></div>
 
   <div>
-    <% if vote && vote.down_vote? %>
+    <% if current_user && current_user.voted(post) && current_user.voted(post).down_vote? %>
       <div class = "icon-chevron-down voted"></div>
     <% else %>
       <%= link_to " ", topic_post_down_vote_path(topic, post), class: "icon-chevron-down" %>
