@@ -3,9 +3,11 @@
 <% @topics.each do |topic| %>
 	<% posts = topic.posts %>
 	<% posts.each do |post| %>
-		<%= render partial: 'posts/post', locals: {topic: topic, post: post} %>
+		<%= render partial: 'posts/post', locals: {post: post} %>
 	<% end %>
 <% end %>
+
+<%#= render @posts %>
 
 <!--  <%# @posts.each do |post| %>
  	<div class="media">

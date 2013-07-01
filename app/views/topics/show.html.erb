@@ -7,7 +7,7 @@
   <div class="span8">
     <p class="lead"><%= @topic.description %></p>
     <% @posts.each do |post| %>
-      <%= render partial: 'posts/post', locals: { topic: @topic, post: post} %>
+      <%= render partial: 'posts/post', locals: {post: post} %>
     <% end %>
     <%= will_paginate @posts %>
   </div>
