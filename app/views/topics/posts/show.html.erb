@@ -37,7 +37,8 @@
 
 <h2><%= @comments.count %> Comments</h2>
 
-<%= render @comments %>
+<%#= render @comments %>
+<%= render partial: 'comments/comment', collection: @comments %>
 
 <% if can? :create, Comment %>
   <hr/>

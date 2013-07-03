@@ -1,6 +1,7 @@
 Bloggit::Application.routes.draw do
   
-  get "posts/index"
+  # get "posts/index"
+  resources :posts, only: [:index]
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', 
                                     registrations: 'users/registrations' }
